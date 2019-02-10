@@ -1,20 +1,30 @@
 import React from 'react'
 
 const BudgetInputForm = (props) => {
+
+    const htmlEntries = [];
+    for (let key in props.entries){
+      const entry = props.entries[key];
+      htmlEntries.push (
+                  <li key = {key} >
+                  <input value={entry.description}readOnly />
+                  <input value={"$"+entry.amount} readOnly />
+                  <button>x</button>
+                  </li>);
+    }
+
+
     return (
        <div>
-          <p>Money In</p>
+          <h3>{props.title}</h3>
           <ul>
-              <li><p>Freelance web project: $20</p></li>
-              <li><p>Varsity Tutors: $80</p></li>
-              <li><p>SEEK program: $50</p></li>
-              <li><p>Uber: $40</p></li>
+            {htmlEntries}
           </ul>
           <div>
-              <input placeholder="Description"/> <input placeholder="0.0"/>
+              <input placeholder="Description"/> <input placeholder="0.00"/>
           </div>
           <br/>
-          <button>Add</button>
+          <button onClick={props.onAddIncomeHandler}>Add</button>
        </div>
     );
 }

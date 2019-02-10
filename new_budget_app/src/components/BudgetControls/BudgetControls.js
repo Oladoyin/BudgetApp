@@ -3,12 +3,12 @@ import BudgetInputForm from '../BudgetInputForm/BudgetInputForm'
 
 const BudgetControls = (props) => {
 
-
   return (
     <div>
-        <p>Budget Controls: </p>
-        <BudgetInputForm/>
-        <BudgetInputForm/>
+        <BudgetInputForm title="Money In" entries={props.incomeEntries}
+        onAddIncomeHandler = {props.onAddIncomeHandler} 
+      />
+        <BudgetInputForm title="Money Out" entries={props.expenseEntries} />
     </div>
   );
 }
